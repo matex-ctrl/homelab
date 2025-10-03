@@ -1,0 +1,16 @@
+---
+- name: Get all pods in Kubernetes
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+    - name: Get a list of all pods from any namespace
+      kubernetes.core.k8s_info:
+        kind: Pod
+      register: pod_list
+
+    - name: show pod list
+      debug:
+        var: pod_list
+...
